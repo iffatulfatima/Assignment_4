@@ -1,144 +1,137 @@
-""" Write a Python program that takes two integer inputs from the user and calculates their sum.
- The program should perform the following tasks:
-Prompt the user to enter the first number.
-Read the input and convert it to an integer.
-Prompt the user to enter the second number.
-Read the input and convert it to an integer.
-Calculate the sum of the two numbers.
- Print the total sum with an appropriate message."""
-
-def main():
-    # Prompt the user to enter two integers
-    num1 = int(input("Enter the first number: "))
-    num2 = int(input("Enter the second number: "))
-
-    # Calculate the sum
-    total = num1 + num2
-
-    # Print the result
-    print(f"The sum of {num1} and {num2} is {total}.")
-
-# Run the program
-if __name__ == "__main__":
-    main()
-
-"""Q:2 Write a program which asks the user what their favorite animal is, and then always responds with "My favorite animal is also ___!" (the blank should be filled in with the user-inputted animal, of course).
-
-What's your favorite animal? cow
-
-My favorite animal is also cow!
+"""Write a simple joke bot. The bot starts by asking the user what they want. However,
+ your program will only respond to one response: Joke.
+If the user enters Joke then we will print out a single joke. Each time the joke is always the same:
+Here is a joke for you! Panaversity GPT - Sophia is heading out to the grocery store.
+A programmer tells her: get a liter of milk, and if they have eggs, get 12. 
+Sophia returns with 13 liters of milk.
+The programmer asks why and Sophia replies: 'because they had eggs'
+If the user enters anything else we print out:
+Sorry I only tell jokes
+You should use the three constants:
+PROMPT JOKE SORRY
+which contain the strings for the prompt asked to the user,
+the joke to print out if the user enters Joke and the sorry message if the user enters anything else.
+Your program will need to use an if statement which checks if the user input is Joke:
+if user_input == "Joke":
+Recall that == is a comparison which tests if two values are equal to one another.
+Here is a full run of the program (user input is in blue):
+What do you want? Joke Here is a joke for you! Panaversity GPT - Sophia is heading out to the grocery store.
+A programmer tells her: get a liter of milk, and if they have eggs, get 12. Sophia returns with 13 liters of milk. The programmer asks why and Sophia replies: 'because they had eggs'
 
 """
-def main():
-    # Ask the user for their favorite animal
-    favorite_animal = input("What's your favorite animal? ")
+# Define constants
+PROMPT = "What do you want? "
+JOKE = ("Here is a joke for you! Panaversity GPT - Sophia is heading out to the grocery store. "
+        "A programmer tells her: get a liter of milk, and if they have eggs, get 12. "
+        "Sophia returns with 13 liters of milk. The programmer asks why and Sophia replies: 'because they had eggs'")
+SORRY = "Sorry I only tell jokes"
 
-    # Respond with a message including the user's input
-    print(f"My favorite animal is also {favorite_animal}!")
+# Ask user for input
+user_input = input(PROMPT)
 
-# Run the program
-if __name__ == "__main__":
-    main()
-"""Q:3 Write a program which prompts the user for a temperature in Fahrenheit (this can be a number with decimal places!) and outputs the temperature converted to Celsius.
+# Respond based on input
+if user_input == "Joke":
+    print(JOKE)
+else:
+    print(SORRY)
 
-The Celsius scale is widely used to measure temperature, but places still use Fahrenheit. Fahrenheit is another unit for temperature, but the scale is different from Celsius -- for example, 0 degrees Celsius is 32 degrees Fahrenheit!
+"""Write a program that asks a user to enter a number. Your program will then double that number 
+and print out the result. It will repeat that process until the value is 100 or greater.
+For example if the user enters the number 2 you would then print:
+4 8 16 32 64 128
+Note that:
+2 doubled is 4
+4 doubled is 8
+8 doubled is 16
+and so on.
+We stop at 128 because that value is greater than 100.
+Maintain the current number in a variable named curr_value. When you double the number, you should be updating curr_value.
+Recall that you can double the value of curr_value using a line like:
+curr_value = curr_value * 2
+This program should have a while loop and the while loop condition should test
+if curr_value is less than 100. Thus, your program will have the line:
+while curr_value < 100:"""
 
-The equation you should use for converting from Fahrenheit to Celsius is the following:
+# Ask the user for a number
+curr_value = int(input("Enter a number: "))
 
-degrees_celsius = (degrees_fahrenheit - 32) * 5.0/9.0
+# Double the number repeatedly and print each value until it's 100 or more
+while curr_value < 100:
+    curr_value = curr_value * 2
+    print(curr_value)
 
-(Note. The .0 after the 5 and 9 matters in the line above!!!)
-
+"""Write a program that prints out the calls for a spaceship that is about to launch.
+Countdown from 10 to 1 and then output Liftoff!
+Here's a sample run of the program:
+10 9 8 7 6 5 4 3 2 1 Liftoff!
+There are many ways to solve this problem. One approach is to use a for loop, and to use the for loop variable
+i. Recall that i will keep track of how many times the for loop has completed executing its body.
+As an example this code:
+for i in range(10): print(i)
+Will print out the values 0, 1, 2, 3, 4, 5, 6, 7, 8, 9. The values printed in liftoff are 10 minus the
+number of times the for loop has completed.
 """
+# Countdown from 10 to 1
+for i in range(10):
+    print(10 - i, end=' ')
+
+# Print Liftoff at the end
+print("Liftoff!")
+
+# Guess My Number
+
+"""I am thinking of a number between 0 and 99... Enter a guess: 50 Your guess is too high
+Enter a new number: 25 Your guess is too low
+Enter a new number: 40 Your guess is too low
+Enter a new number: 45 Your guess is too low
+Enter a new number: 48 Congrats! The number was: 48"""
+
+import random
+
+# Generate a random number between 0 and 99
+secret_number = random.randint(0, 99)
+
+print("I am thinking of a number between 0 and 99...")
+
+# Ask the user to make a guess
+guess = int(input("Enter a guess: "))
+
+# Loop until the user guesses correctly
+while guess != secret_number:
+    if guess > secret_number:
+        print("Your guess is too high")
+    else:
+        print("Your guess is too low")
+    # Ask for a new guess
+    guess = int(input("Enter a new number: "))
+
+# Correct guess
+print(f"Congrats! The number was: {secret_number}")
+
+
+"""Print 10 random numbers in the range 1 to 100.
+Here is an example run:
+45 79 61 47 52 10 16 83 19 12
+Each time you run your program you should get different numbers
+81 76 70 1 27 63 96 100 32 92
+Recall that the python random library has a function randint which returns an integer in the range set by the parameters (inclusive). For example
+this call would produce a random integer between 1 and 6, which could include 1 and could include 6:
+value = random.randint(1, 6)"""
+
+import random
+
+N_NUMBERS: int = 10
+MIN_VALUE: int = 1
+MAX_VALUE: int = 100
+
 def main():
-    # Prompt the user to enter temperature in Fahrenheit
-    fahrenheit = float(input("Enter temperature in Fahrenheit: "))
+    """
+    Generates and prints N_NUMBERS random integers between MIN_VALUE and MAX_VALUE.
+    """
+    for _ in range(N_NUMBERS):
+        number = random.randint(MIN_VALUE, MAX_VALUE)
+        print(number, end=' ')
+    print()  # for a newline at the end
 
-    # Convert Fahrenheit to Celsius
-    celsius = (fahrenheit - 32) * 5.0 / 9.0
-
-    # Display the result
-    print(f"Temperature: {fahrenheit}F = {celsius}C")
-
-# Run the program
-if __name__ == "__main__":
-    main()
-"""Q:4 Write a program to solve this age-related riddle!
-
-Anton, Beth, Chen, Drew, and Ethan are all friends. Their ages are as follows:
-
-Anton is 21 years old.
-Beth is 6 years older than Anton.
-Chen is 20 years older than Beth.
-Drew is as old as Chen's age plus Anton's age.
-Ethan is the same age as Chen.
-Your code should store each person's age to a variable and print their names and ages at the end. The autograder is sensitive to capitalization and punctuation, be careful! Your solution should look like this (the below numbers are made up -- your solution should have the correct values!):
-Anton is 3
-Beth is 4
-Chen is 5
-Drew is 6
-Ethan is 7
-"""
-def main():
-    # Storing each friend's age in variables based on the clues provided
-    anton_age = 21
-    beth_age = anton_age + 6  # Beth is 6 years older than Anton
-    chen_age = beth_age + 20  # Chen is 20 years older than Beth
-    drew_age = chen_age + anton_age  # Drew's age is Chen's age plus Anton's age
-    ethan_age = chen_age  # Ethan is the same age as Chen
-
-    # Printing the names and ages
-    print(f"Anton is {anton_age}")
-    print(f"Beth is {beth_age}")
-    print(f"Chen is {chen_age}")
-    print(f"Drew is {drew_age}")
-    print(f"Ethan is {ethan_age}")
-
-# Run the program
-if __name__ == "__main__":
-    main()
-
-"""Q:5 Prompt the user to enter the lengths of each side of a triangle and then calculate and print the perimeter of the triangle (the sum of all of the side lengths).
-
-Here's a sample run of the program (user input is in bold italics):
-What is the length of side 1? 3
-What is the length of side 2? 4
-What is the length of side 3? 5.5
-The perimeter of the triangle is 12.5
-
-"""
-def main():
-    # Prompt the user to enter the lengths of the sides
-    side1 = int(input("What is the length of side 1? "))
-    side2 = int(input("What is the length of side 2? "))
-    side3 = int(input("What is the length of side 3? "))
-
-    # Calculate the perimeter
-    perimeter = side1 + side2 + side3
-
-    # Print the perimeter
-    print(f"The perimeter of the triangle is {perimeter}")
-
-# Run the program
-if __name__ == "__main__":
-    main()
-"""Q:6Ask the user for a number and print its square (the product of the number times itself).
-Here's a sample run of the program (user input is in bold italics):
-Type a number to see its square: 4
-4.0 squared is 16.0
-
-"""
-def main():
-    # Ask the user to input a number
-    number = float(input("Type a number to see its square: "))
-
-    # Calculate the square of the number
-    square = number ** 2
-
-
-    # Print the result
-    print(f"{number} squared is {square}")
-
-# Run the program
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
