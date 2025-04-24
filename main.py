@@ -1,47 +1,30 @@
-import random
+# Step 1: Welcome message
+print("\n✨ Welcome to the Fairy Tale Mad Libs Game! ✨")
+print("Fill in the blanks and create your magical story!")
+print("=" * 60)
 
-NUM_ROUNDS = 5
+# Step 2: User input
+hero_name = input("Enter a hero's name: ")
+magical_place = input("Enter a magical place: ")
+object_name = input("Enter a magical object: ")
+adjective = input("Enter an adjective: ")
+creature = input("Enter a magical creature (e.g., dragon, unicorn): ")
+power = input("Enter a superpower: ")
+villain_name = input("Enter a villain's name: ")
 
-def main():
-    print("🎲 Welcome to the High-Low Game!")
-    print('--------------------------------')
+# Step 3: Story template
+story = f"""
+In a faraway land called {magical_place}, there lived a brave soul named {hero_name}.
+One day, {hero_name} found a mysterious {object_name} that glowed with a {adjective} light.
+Suddenly, a wild {creature} appeared and warned {hero_name} of danger.
 
-    your_score = 0
+With the power of {power}, {hero_name} set out on a quest to defeat the evil {villain_name}.
+After an epic battle, peace was restored in {magical_place}, and {hero_name} became a legend forever.
 
-    for i in range(NUM_ROUNDS):
-        print(f"🔁 Round {i + 1} of {NUM_ROUNDS}")
-        print("----------------------------")
+The end 🌟
+"""
 
-        computer_num = random.randint(1, 100)
-        your_num = random.randint(1, 100)
-        print("Your number is:", your_num)
-
-        choice = input("Do you think your number is HIGHER or LOWER than the computer's? ").strip().lower()
-
-        while choice not in ("higher", "lower"):
-            choice = input("❗ Please enter either 'higher' or 'lower': ").strip().lower()
-
-        higher_and_correct = choice == "higher" and your_num > computer_num
-        lower_and_correct = choice == "lower" and your_num < computer_num
-
-        if higher_and_correct or lower_and_correct:
-            print(f"✅ You were right! The computer's number was {computer_num}.")
-            your_score += 1
-        else:
-            print(f"❌ Incorrect. The computer's number was {computer_num}.")
-
-        print(f"⭐ Current Score: {your_score}/{i + 1}")
-        print()
-
-    print("🎯 Game Over!")
-    print(f"🏁 Final Score: {your_score}/{NUM_ROUNDS} ({(your_score / NUM_ROUNDS) * 100:.0f}%)")
-
-    if your_score == NUM_ROUNDS:
-        print("🎉 Wow! You played perfectly!")
-    elif your_score > NUM_ROUNDS // 2:
-        print("👍 Good job, you played really well!")
-    else:
-        print("🙁 Better luck next time!")
-
-if __name__ == "__main__":
-    main()
+# Step 4: Print the final story
+print("\n📖 Here is your magical Mad Libs story:")
+print("-" * 60)
+print(story)
