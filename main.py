@@ -1,30 +1,25 @@
-# Step 1: Welcome message
-print("\n✨ Welcome to the Fairy Tale Mad Libs Game! ✨")
-print("Fill in the blanks and create your magical story!")
-print("=" * 60)
+import random
 
-# Step 2: User input
-hero_name = input("Enter a hero's name: ")
-magical_place = input("Enter a magical place: ")
-object_name = input("Enter a magical object: ")
-adjective = input("Enter an adjective: ")
-creature = input("Enter a magical creature (e.g., dragon, unicorn): ")
-power = input("Enter a superpower: ")
-villain_name = input("Enter a villain's name: ")
+print(
+    "welcome to the game,This is a number guessing game! \n You got 5 Attempts to guess the number"
+" between 50 and 100, lets start a game!")
 
-# Step 3: Story template
-story = f"""
-In a faraway land called {magical_place}, there lived a brave soul named {hero_name}.
-One day, {hero_name} found a mysterious {object_name} that glowed with a {adjective} light.
-Suddenly, a wild {creature} appeared and warned {hero_name} of danger.
+number_to_guess = random.randrange(50,100)
 
-With the power of {power}, {hero_name} set out on a quest to defeat the evil {villain_name}.
-After an epic battle, peace was restored in {magical_place}, and {hero_name} became a legend forever.
+chances=5
 
-The end 🌟
-"""
+guess_counter = 0
 
-# Step 4: Print the final story
-print("\n📖 Here is your magical Mad Libs story:")
-print("-" * 60)
-print(story)
+while guess_counter < chances:
+    guess_counter += 1
+    my_guess = int (input("Please enter your guess: "))
+
+    if my_guess == number_to_guess:
+        print(f"The number is {number_to_guess} and you found it right!! in the {guess_counter} attempt")
+        break
+    elif guess_counter >= chances and my_guess != number_to_guess:
+        print(f"Oops Sorry, the number is {number_to_guess} better luck next time!")
+    elif my_guess < number_to_guess:
+        print(f"your guess is very low,try again!")
+    elif my_guess > number_to_guess:
+        print("your guess is very high,try again!")
